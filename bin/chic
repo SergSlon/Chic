@@ -2,4 +2,4 @@
 
 require __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'defines.php';
 
-echo 'My Chic Frameworl !';
+echo 'The powerful comand-line Chic tool ... not so powerful for now';

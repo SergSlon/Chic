@@ -12,5 +12,16 @@ Once you have PHP 5.4 available
 * Then open a browser and goto : http://localhost:7777
 * It works like a charm !
 
+## Done
+* Use of composer
+* Follow PSR-0 convention
+* Use Behat to tests
+* Chic :
+** Config : a static class which read config files and allow y to define specific environment files
+** I18n : a static class which translate strings into the (default | defined) language. String can content variables.
+
+## Todo
+* So much to list, i don't have time
+
 
 
