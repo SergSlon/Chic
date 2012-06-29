@@ -7,5 +7,9 @@
 return array(
     'i18n' => array(
         'default' => 'fr'
+    ),
+    
+    'router' => array(
+        'base' => 'http://localhost:7777'
     )
 );

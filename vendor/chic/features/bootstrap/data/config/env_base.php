@@ -14,5 +14,18 @@ return array(
     'i18n' => array(
         'langs' => array('en','fr'),
         'default' => 'en'
+    ),
+            
+    'router' => array(
+        'base' => 'http://alexgalinier.com',
+        'defaultMethodName' => 'default',
+        'defaultHttpMethods' => array('GET','POST'),
+        'getHttpMethod' => function() {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                return (isset($_POST['_method'])) ? $_POST['_method'] : 'POST';
+            } else {
+                return $_SERVER['REQUEST_METHOD'];
+            }
+        }
     )
 );

@@ -23,6 +23,9 @@ class FeatureContext extends BehatContext
         $this->useContext('i18n_context', new I18nContext(array(
             'i18nPath' => __DIR__.DS.'data'.DS.'lang'
         )));
+        $this->useContext('router_context', new RouterContext(array(
+            'routeFolderPath' => __DIR__.DS.'data'.DS.'routes'
+        )));
     }
     
     /**
@@ -30,9 +33,32 @@ class FeatureContext extends BehatContext
      */
     public function iShouldGet($string)
     {
-        if ((string) $string !== $this->output) {
+        if ($string === 'false') {
+            $this->assertEquals($this->output, false);
+        } else if ($string === 'true') {
+            $this->assertEquals($this->output, true);
+        } else {
+            $this->assertEquals($this->output, $string);
+        }
+    }
+    
+    public function assertEquals($val1, $val2)
+    {
+        $throwException = true;
+            
+        if (is_array($val1) && is_array($val2)) {
+            if (sizeof(array_diff_assoc($val1, $val2)) === 0) {
+                $throwException = false;
+            }
+        } else {
+            if ($val1 === $val2) {
+                $throwException = false;
+            }
+        }
+        
+        if ($throwException) {
             throw new Exception(
-                "Actual value is : ".$this->output.PHP_EOL."Waiting for : ".$string
+                "Actual value is : ".print_r($val1, true).PHP_EOL."Waiting for : ".print_r($val2, true)
             );
         }
     }
